@@ -10,10 +10,10 @@ class player : public QObject, public QGraphicsItem
 public:
     player();
 
-    QRectF boundingRect() const;
-    QPainterPath shape() const;
-    void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
-               QWidget *widget);
+  QRectF boundingRect() const;
+  QPainterPath shape() const;
+  void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
+	      QWidget *widget);
   void rotateLeft();
   void rotateRight();
   void accelerate();
