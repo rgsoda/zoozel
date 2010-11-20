@@ -8,16 +8,9 @@ mainwindow::mainwindow()
     s = new scene;
     setCentralWidget ( s );
     resize ( 870,600 );
-    //this->setAttribute(Qt::WA_KeyCompression);
-    actions.insert ( Qt::Key_W, Accelerate );
-    actions.insert ( Qt::Key_A, RotateLeft );
-    actions.insert ( Qt::Key_D, RotateRight );
-    actions.insert ( Qt::Key_S, Brake );
+  //  setAttribute(Qt::WA_KeyCompression);
 
 
-    QTimer timer;
-    QObject::connect ( &timer, SIGNAL ( timeout() ), this, SLOT ( movePlayer() ) );
-    timer.start ( 1000 / 33 );
 
 }
 
@@ -28,19 +21,20 @@ void mainwindow::keyPressEvent ( QKeyEvent *event )
 
     switch ( event->key() )
     {
-    case Qt::Key_Left:
+    case Qt::Key_O:
         keyLeft = true;
         break;
-    case Qt::Key_Right:
+    case Qt::Key_P:
         keyRight = true;
         break;
-    case Qt::Key_Up:
+    case Qt::Key_Q:
         keyUp = true;
         break;
-    case Qt::Key_Down:
+    case Qt::Key_A:
         keyDown = true;
         break;
     }
+    movePlayer();
 }
 
 void mainwindow::keyReleaseEvent ( QKeyEvent *event )
@@ -50,16 +44,16 @@ void mainwindow::keyReleaseEvent ( QKeyEvent *event )
     {
         switch ( event->key() )
         {
-        case Qt::Key_Left:
+        case Qt::Key_O:
             keyLeft = false;
             break;
-        case Qt::Key_Right:
+        case Qt::Key_P:
             keyRight = false;
             break;
-        case Qt::Key_Up:
+        case Qt::Key_Q:
             keyUp = false;
             break;
-        case Qt::Key_Down:
+        case Qt::Key_A:
             keyDown = false;
             break;
         }

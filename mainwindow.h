@@ -13,7 +13,7 @@
 
 class mainwindow : public QMainWindow
 {
-  Q_OBJECT
+  //Q_OBJECT
 public:
     mainwindow();
     scene *s;
@@ -22,8 +22,6 @@ protected:
     virtual void keyReleaseEvent( QKeyEvent *event );
 
 private:
-    enum Action { Accelerate, Brake, RotateLeft, RotateRight, AccelerateAndRotateLeft, AccelerateAndRotateRight };
-    QMap<int,Action> actions;
     int keys;
     bool keyUp;
     bool keyDown;

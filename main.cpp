@@ -13,6 +13,7 @@ int main(int argc, char** argv)
     
     QTimer timer;
     QObject::connect(&timer, SIGNAL(timeout()), main->s->getScene(), SLOT(advance()));
+    //QObject::connect(&timer, SIGNAL(timeout()), main, SLOT(movePlayer()));
     timer.start(1000 / 33);
     
     return app.exec();
