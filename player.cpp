@@ -29,6 +29,7 @@ player::player()
 {
     setRotation(qrand() % (360 * 16));
     image = QImage("images/f1.jpg");
+    setZValue(1.0);
     
 }
 QRectF player::boundingRect() const
@@ -51,7 +52,9 @@ void player::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget 
     painter->drawRect(-5,-10,10,20);
     //qDebug("%d " , scene()->collidingItems(this).size());
     if(scene()->collidingItems(this).size() > 0) {
-      this->speed = 0;
+      const float minSpeed = 1.0;
+      if (this->speed > minSpeed)
+        this->speed = (this->speed - minSpeed) * 0.9 + minSpeed;
     }
 }
 void player::advance(int step)
