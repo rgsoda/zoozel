@@ -29,24 +29,30 @@ player::player()
 {
     setRotation(qrand() % (360 * 16));
     image = QImage("images/f1.jpg");
+    
 }
 QRectF player::boundingRect() const
 {
-    qreal adjust = 0.5;
-    return QRectF(-18 - adjust, -22 - adjust,
-                  36 + adjust, 60 + adjust);
+    qreal adjust = 0.0;
+    return QRectF(-5 - adjust, -10 - adjust,
+                  10 + adjust, 20 + adjust);
 }
 QPainterPath player::shape() const
 {
     QPainterPath path;
-    path.addRect(-10, -20, 20, 40);
+    path.addRect(-5, -10, 10, 20);
     return path;
 }
 
 void player::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
-    painter->drawImage(QPoint(-10,-20),image);
-    
+
+    painter->setBrush(Qt::white);
+    painter->drawRect(-5,-10,10,20);
+    //qDebug("%d " , scene()->collidingItems(this).size());
+    if(scene()->collidingItems(this).size() > 0) {
+      this->speed = 0;
+    }
 }
 void player::advance(int step)
 {
@@ -54,29 +60,30 @@ void player::advance(int step)
     if (!step)
         return;
 
-    setPos(mapToParent(0, -(3 + speed * 3)));
+    setPos(mapToParent(0, -(speed)));
+    
 }
 
 
 void player::accelerate()
 {
-  speed += 0.1;
+  speed += 0.2;
 }
 
 void player::brake()
 {
-  speed -= 0.1;
+  speed -= 0.4;
 }
 
 void player::rotateLeft()
 {
-  qreal dx = ::sin(-0.6) * 10;
-  setRotation(rotation() + dx);
+  qreal dx = 7;
+  setRotation(rotation() - dx);
 }
 
 void player::rotateRight()
 {
-  qreal dx = ::sin(-0.6) * 10;
-  setRotation(rotation() - dx);
+  qreal dx = 7;
+  setRotation(rotation() + dx);
 
 }

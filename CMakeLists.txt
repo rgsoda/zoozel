@@ -4,7 +4,9 @@ find_package(Qt4 REQUIRED)
 
 include_directories(${QT_INCLUDES} ${CMAKE_CURRENT_BINARY_DIR})
 
-set(zoozel_SRCS mainwindow.cpp scene.cpp player.cpp main.cpp)
+set(zoozel_SRCS track.cpp mainwindow.cpp scene.cpp player.cpp main.cpp)
+set(zoozel_MOC_HEADERS track.h mainwindow.h scene.h player.h)
+
 qt4_automoc(${zoozel_SRCS})
 add_executable(zoozel ${zoozel_SRCS})
 target_link_libraries(zoozel ${QT_QTCORE_LIBRARY} ${QT_QTGUI_LIBRARY})

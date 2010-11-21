@@ -8,10 +8,10 @@ mainwindow::mainwindow()
     s = new scene;
     setCentralWidget ( s );
     resize ( 870,600 );
-  //  setAttribute(Qt::WA_KeyCompression);
+    setAttribute(Qt::WA_KeyCompression);
 
 
-
+ 
 }
 
 
@@ -45,7 +45,7 @@ void mainwindow::keyReleaseEvent ( QKeyEvent *event )
         switch ( event->key() )
         {
         case Qt::Key_O:
-            keyLeft = false;
+	    keyLeft = false;
             break;
         case Qt::Key_P:
             keyRight = false;
@@ -58,6 +58,7 @@ void mainwindow::keyReleaseEvent ( QKeyEvent *event )
             break;
         }
     }
+    movePlayer();
 }
 
 

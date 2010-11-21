@@ -6,6 +6,7 @@
 #include <QGraphicsScene>
 #include <QGraphicsView>
 #include "player.h"
+#include "track.h"
 
 class scene : public QWidget
 {
@@ -22,6 +23,8 @@ private:
     QGraphicsScene field;
     QGraphicsView view;
     player *p;
+    track *t;
+    
 };
 
 #endif // SCENE_H

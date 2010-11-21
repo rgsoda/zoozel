@@ -13,7 +13,7 @@
 
 class mainwindow : public QMainWindow
 {
-  //Q_OBJECT
+
 public:
     mainwindow();
     scene *s;
