@@ -15,7 +15,7 @@ class scene : public QWidget
 public:
     scene();
     void rotatePlayerLeft();
-    void rotatePlayerRigh();
+    void rotatePlayerRight();
     void acceleratePlayer();
     void brakePlayer();
     QGraphicsScene * getScene();

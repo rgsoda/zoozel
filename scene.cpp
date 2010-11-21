@@ -52,7 +52,7 @@ void scene::rotatePlayerLeft()
 }
 
 
-void scene::rotatePlayerRigh()
+void scene::rotatePlayerRight()
 {
   p->rotateRight();
 }

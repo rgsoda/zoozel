@@ -13,6 +13,7 @@
 
 class mainwindow : public QMainWindow
 {
+    Q_OBJECT
 
 public:
     mainwindow();
@@ -32,7 +33,8 @@ private:
     bool keyRight;
 
 public slots:
-  void movePlayer();
+    void advance();
+    void movePlayer();
 };
 
 #endif // MAINWINDOW_H

@@ -8,13 +8,10 @@ const int mainwindow::window_height;
 mainwindow::mainwindow()
     : keyUp(false), keyDown(false), keyLeft(false), keyRight(false)
 {
-
     s = new scene;
     setCentralWidget ( s );
     resize ( window_width, window_height);
     setAttribute(Qt::WA_KeyCompression);
-
- 
 }
 
 
@@ -39,7 +36,6 @@ void mainwindow::keyPressEvent ( QKeyEvent *event )
     default:
         return;
     }
-    movePlayer();
 }
 
 void mainwindow::keyReleaseEvent ( QKeyEvent *event )
@@ -50,7 +46,7 @@ void mainwindow::keyReleaseEvent ( QKeyEvent *event )
         switch ( event->key() )
         {
         case Qt::Key_O:
-	    keyLeft = false;
+            keyLeft = false;
             break;
         case Qt::Key_P:
             keyRight = false;
@@ -65,14 +61,18 @@ void mainwindow::keyReleaseEvent ( QKeyEvent *event )
             return;
         }
     }
-    movePlayer();
 }
 
+void mainwindow::advance()
+{
+    movePlayer();
+    s->getScene()->advance();
+}
 
 void mainwindow::movePlayer()
 {
     if ( keyLeft ) { s->rotatePlayerLeft(); }
-    else if ( keyRight ) s->rotatePlayerRigh();
+    else if ( keyRight ) s->rotatePlayerRight();
     if ( keyDown ) s->brakePlayer();
     else if ( keyUp ) s->acceleratePlayer();
 }

@@ -12,7 +12,7 @@ int main(int argc, char** argv)
     main->show();
     
     QTimer timer;
-    QObject::connect(&timer, SIGNAL(timeout()), main->s->getScene(), SLOT(advance()));
+    QObject::connect(&timer, SIGNAL(timeout()), main, SLOT(advance()));
     //QObject::connect(&timer, SIGNAL(timeout()), main, SLOT(movePlayer()));
     timer.start(1000 / 33);
     
