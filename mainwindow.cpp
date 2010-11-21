@@ -3,6 +3,7 @@
 
 
 mainwindow::mainwindow()
+    : keyUp(false), keyDown(false), keyLeft(false), keyRight(false)
 {
 
     s = new scene;
@@ -33,6 +34,8 @@ void mainwindow::keyPressEvent ( QKeyEvent *event )
     case Qt::Key_A:
         keyDown = true;
         break;
+    default:
+        return;
     }
     movePlayer();
 }
@@ -56,6 +59,8 @@ void mainwindow::keyReleaseEvent ( QKeyEvent *event )
         case Qt::Key_A:
             keyDown = false;
             break;
+        default:
+            return;
         }
     }
     movePlayer();
