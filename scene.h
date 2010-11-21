@@ -7,6 +7,7 @@
 #include <QGraphicsView>
 #include "player.h"
 #include "track.h"
+#include "obstacle.h"
 
 class scene : public QWidget
 {

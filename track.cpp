@@ -1,37 +1,28 @@
-
+#include <QGraphicsItem>
 #include "track.h"
-
-#include <QGraphicsScene>
-#include <QPainter>
-#include <QStyleOption>
-#include <QKeyEvent>
-#include <QImage>
-#include <QEvent>
-#include <math.h>
-
+#include "mainwindow.h"
 
 track::track()
-    : color(qrand() % 256, qrand() % 256, qrand() % 256)
 {
-    image = QImage("images/f1.jpg");
-    
-}
-QRectF track::boundingRect() const
-{
-    qreal adjust = 0.0;
-    return QRectF(10 - adjust, 10 - adjust,
-                  200 + adjust, 200 + adjust);
-}
-QPainterPath track::shape() const
-{
-    QPainterPath path;
-    path.addRect(10, 10, 200, 200);
-    return path;
+  
+  obstacle *top = new obstacle(0,0,mainwindow::window_width,50);
+  obstacle *bottom = new obstacle(0,mainwindow::window_height-50,mainwindow::window_width,50);
+  obstacle *left = new obstacle(0,0,50,mainwindow::window_height);
+  obstacle *right = new obstacle(mainwindow::window_width-50,0,50,mainwindow::window_height);
+  obstacle *center = new obstacle(120,130,mainwindow::window_width-280, mainwindow::window_height-240);
+  obstacleList.append(top);
+  obstacleList.append(bottom);
+  obstacleList.append(left);
+  obstacleList.append(right);
+  obstacleList.append(center);
+/*  for(int x = 0; x <= mainwindow::window_width; x+=100) {
+      obstacleList.append(new obstacle(x,x,x+100,x+100));
+  }*/
+  startPoint = QPoint(60,60);
+  
 }
 
-void track::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
+QList< obstacle* > track::getObstacleList()
 {
-
-    painter->drawRect( 10 , 10 , 200 ,200);
-    
+  return obstacleList;
 }

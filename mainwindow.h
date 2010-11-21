@@ -17,6 +17,9 @@ class mainwindow : public QMainWindow
 public:
     mainwindow();
     scene *s;
+    const static int window_width = 800;
+    const static int window_height = 600;
+
 protected:
     virtual void keyPressEvent( QKeyEvent *event );
     virtual void keyReleaseEvent( QKeyEvent *event );

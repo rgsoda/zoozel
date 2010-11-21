@@ -2,15 +2,17 @@
 #include "mainwindow.h"
 
 
+const int mainwindow::window_width;
+const int mainwindow::window_height;
+
 mainwindow::mainwindow()
     : keyUp(false), keyDown(false), keyLeft(false), keyRight(false)
 {
 
     s = new scene;
     setCentralWidget ( s );
-    resize ( 870,600 );
+    resize ( window_width, window_height);
     setAttribute(Qt::WA_KeyCompression);
-
 
  
 }
