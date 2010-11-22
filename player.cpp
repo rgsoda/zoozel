@@ -12,6 +12,8 @@
 
 static const double Pi = 3.14159265358979323846264338327950288419717;
 static double TwoPi = 2.0 * Pi;
+static qreal maxSpeed = 6.0;
+static qreal maxReverseSpeed = -1.6;
 
 static qreal normalizeAngle(qreal angle)
 {
@@ -50,9 +52,9 @@ void player::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget 
 
     painter->setBrush(Qt::white);
     painter->drawRect(-5,-10,10,20);
-    //qDebug("%d " , scene()->collidingItems(this).size());
+
     if(scene()->collidingItems(this).size() > 0) {
-      const float minSpeed = 1.0;
+      static float minSpeed = 1.0;
       if (this->speed > minSpeed)
         this->speed = (this->speed - minSpeed) * 0.9 + minSpeed;
     }
@@ -70,23 +72,30 @@ void player::advance(int step)
 
 void player::accelerate()
 {
-  speed += 0.2;
+  if(speed<maxSpeed)
+    speed += 0.2;
 }
 
 void player::brake()
 {
-  speed -= 0.4;
+  if(speed>maxReverseSpeed)
+    speed -= 0.4;
 }
 
 void player::rotateLeft()
 {
   qreal dx = 7;
+  if( speed > 0.07 )
+    speed -= 0.07;
   setRotation(rotation() - dx);
+  
 }
 
 void player::rotateRight()
 {
   qreal dx = 7;
+  if( speed > 0.07 )
+    speed -= 0.07;
   setRotation(rotation() + dx);
-
+  
 }
