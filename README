@@ -1,0 +1,6 @@
+usage:
+./zoozel image_file_name track_data_file_name
+
+./zoozel images/track.jpg images/track.dat
+
+

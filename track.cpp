@@ -1,28 +1,48 @@
 #include <QGraphicsItem>
+#include <QFile>
+#include <QtDebug>
 #include "track.h"
 #include "mainwindow.h"
+#include <qjson/parser.h>
 
 track::track()
 {
-  
-  obstacle *top = new obstacle(0,0,mainwindow::window_width,50);
-  obstacle *bottom = new obstacle(0,mainwindow::window_height-50,mainwindow::window_width,50);
-  obstacle *left = new obstacle(0,0,50,mainwindow::window_height);
-  obstacle *right = new obstacle(mainwindow::window_width-50,0,50,mainwindow::window_height);
-  obstacle *center = new obstacle(120,130,mainwindow::window_width-280, mainwindow::window_height-240);
-  obstacleList.append(top);
-  obstacleList.append(bottom);
-  obstacleList.append(left);
-  obstacleList.append(right);
-  obstacleList.append(center);
-/*  for(int x = 0; x <= mainwindow::window_width; x+=100) {
-      obstacleList.append(new obstacle(x,x,x+100,x+100));
-  }*/
+
   startPoint = QPoint(60,60);
   
 }
 
-QList< obstacle* > track::getObstacleList()
+QList< obstacle *> track::getObstacleList()
 {
   return obstacleList;
+}
+
+
+void track::readJSON(QString &filename) {
+    QJson::Parser parser;
+    bool ok;
+    QFile read(filename);
+    read.open(QIODevice::ReadOnly);
+    QDataStream in(&read);    // read the data serialized from the file
+    QByteArray json;
+    in >> json;
+
+    QVariantList vmap = parser.parse(json, &ok).toList();
+
+    if (!ok) {
+      qFatal("An error occurred during parsing track data");
+      exit (1);
+    }
+
+
+
+   foreach (QVariant polygon, vmap) {
+      qDebug() << "\t-" << polygon.toList().size();
+      QPolygon *p = new QPolygon();
+      foreach(QVariant point, polygon.toList()) {
+          qDebug() << "\t-" << point.toMap()["x"].toInt() << "\t-" << point.toMap()["y"].toInt();
+            p->append(QPoint(point.toMap()["x"].toInt(),point.toMap()["y"].toInt()));
+            obstacleList.append(new obstacle(p));
+      }
+   }
 }

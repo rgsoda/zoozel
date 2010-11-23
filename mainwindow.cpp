@@ -2,15 +2,13 @@
 #include "mainwindow.h"
 
 
-const int mainwindow::window_width;
-const int mainwindow::window_height;
 
 mainwindow::mainwindow()
     : keyUp(false), keyDown(false), keyLeft(false), keyRight(false)
 {
     s = new scene;
+    s->setParent(this);
     setCentralWidget ( s );
-    resize ( window_width, window_height);
     setAttribute(Qt::WA_KeyCompression);
 }
 
@@ -76,3 +74,12 @@ void mainwindow::movePlayer()
     if ( keyDown ) s->brakePlayer();
     else if ( keyUp ) s->acceleratePlayer();
 }
+
+
+void mainwindow::setTrackInfo(QString image, QString data) {
+    this->trackImageFileName = image;
+    s->setTrackImage(image);
+    this->trackDataFileName = data;
+    s->setTrackData(data);
+}
+

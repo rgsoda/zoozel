@@ -10,32 +10,34 @@
 #include <math.h>
 
 
-obstacle::obstacle ( qreal x, qreal y, qreal width, qreal height )
-{
-  this->x = x;
-  this->y = y;
-  this->width = width;
-  this->height = height;
+obstacle::obstacle(QPolygon *p) {
+    poly = p;
 }
-
 QRectF obstacle::boundingRect() const
 {
-    qreal adjust = 0.0;
-    return QRectF(x - adjust, y - adjust,
-                  width + adjust, height + adjust);
+
+    return QRectF();
+
 }
 QPainterPath obstacle::shape() const
 {
     QPainterPath path;
-    path.addRect(x, y, width, height);
+    //path.addRect(x, y, width, height);
+    path.addPolygon(*poly);
     return path;
 }
 
+bool obstacle::collidesWithItem(const QGraphicsItem *other, Qt::ItemSelectionMode mode) const {
+    if(other->shape().intersects(this->shape())) {
+        return true;
+    }
+    return false;
+}
 void obstacle::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
     
-    painter->drawRect( x , y , width,height);
-    painter->fillRect( x , y , width,height, Qt::green);
-    
+//    painter->drawRect( x , y , width,height);
+//    painter->fillRect( x , y , width,height, Qt::green);
+    painter->drawPolygon(*poly,Qt::OddEvenFill);
     
 }

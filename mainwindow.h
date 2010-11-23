@@ -20,7 +20,7 @@ public:
     scene *s;
     const static int window_width = 800;
     const static int window_height = 600;
-
+    void setTrackInfo(QString image, QString data);
 protected:
     virtual void keyPressEvent( QKeyEvent *event );
     virtual void keyReleaseEvent( QKeyEvent *event );
@@ -31,6 +31,8 @@ private:
     bool keyDown;
     bool keyLeft;
     bool keyRight;
+    QString trackImageFileName;
+    QString trackDataFileName;
 
 public slots:
     void advance();

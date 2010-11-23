@@ -54,9 +54,11 @@ void player::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget 
     painter->drawRect(-5,-10,10,20);
 
     if(scene()->collidingItems(this).size() > 0) {
-      static float minSpeed = 1.0;
-      if (this->speed > minSpeed)
-        this->speed = (this->speed - minSpeed) * 0.9 + minSpeed;
+        qDebug(" colison !!!!!");
+        this->speed = 0;
+//      static float minSpeed = 1.0;
+//      if (this->speed > minSpeed)
+//        this->speed = (this->speed - minSpeed) * 0.9 + minSpeed;
     }
 }
 void player::advance(int step)

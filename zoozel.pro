@@ -21,7 +21,7 @@ HEADERS  += mainwindow.h \
 
 
 FORMS    +=
-LIBS     += -L.
+LIBS     += -L. -lqjson
 
 RESOURCES +=
 

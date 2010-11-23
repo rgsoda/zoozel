@@ -19,19 +19,9 @@ scene::scene() : QWidget() , field(0,0,mainwindow::window_width,mainwindow::wind
     
     
     p = new player();
-    
-    
     field.addItem(p);
     
     t = new track();
-    foreach(obstacle *o, t->getObstacleList()) {
-      field.addItem(dynamic_cast<QGraphicsItem*>(o));
-    }
-    p->setPos(t->startPoint);
-    
-    view.setBackgroundBrush(QPixmap("images/asphalt.jpg"));
-
-
 
 }
 
@@ -60,4 +50,22 @@ void scene::rotatePlayerRight()
 QGraphicsScene *scene::getScene()
 {
   return &field;
+}
+
+
+void scene::setTrackImage(QString &fileName) {
+    QPixmap trackImage(fileName);
+    view.setBackgroundBrush(trackImage);
+    dynamic_cast<mainwindow*>(this->parent())->resize(trackImage.size());
+    field.setSceneRect(trackImage.rect());
+}
+
+
+void scene::setTrackData(QString &fileName) {
+    t->readJSON(fileName);
+    foreach(obstacle *o, t->getObstacleList()) {
+      field.addItem(dynamic_cast<QGraphicsItem*>(o));
+    }
+    p->setPos(t->startPoint);
+
 }

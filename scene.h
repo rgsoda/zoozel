@@ -20,6 +20,8 @@ public:
     void brakePlayer();
     QGraphicsScene * getScene();
     
+    void setTrackImage(QString &fileName);
+    void setTrackData(QString &fileName);
 private:
     QGraphicsScene field;
     QGraphicsView view;

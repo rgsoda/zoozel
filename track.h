@@ -30,6 +30,7 @@ public:
   track();
   QList<obstacle *> getObstacleList();
   QPoint startPoint;
+  void readJSON(QString &filename);
 
 private:
   QList<obstacle *> obstacleList;
