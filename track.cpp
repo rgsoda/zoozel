@@ -8,7 +8,7 @@
 track::track()
 {
 
-  startPoint = QPoint(60,60);
+  startPoint = QPoint(65,60);
   
 }
 

@@ -16,7 +16,7 @@ obstacle::obstacle(QPolygon *p) {
 QRectF obstacle::boundingRect() const
 {
 
-    return QRectF();
+    return poly->boundingRect();
 
 }
 QPainterPath obstacle::shape() const
