@@ -37,10 +37,8 @@ void track::readJSON(QString &filename) {
 
 
    foreach (QVariant polygon, vmap) {
-      qDebug() << "\t-" << polygon.toList().size();
       QPolygon *p = new QPolygon();
       foreach(QVariant point, polygon.toList()) {
-          qDebug() << "\t-" << point.toMap()["x"].toInt() << "\t-" << point.toMap()["y"].toInt();
             p->append(QPoint(point.toMap()["x"].toInt(),point.toMap()["y"].toInt()));
             obstacleList.append(new obstacle(p));
       }

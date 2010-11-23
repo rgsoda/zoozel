@@ -27,17 +27,9 @@ QPainterPath obstacle::shape() const
     return path;
 }
 
-bool obstacle::collidesWithItem(const QGraphicsItem *other, Qt::ItemSelectionMode mode) const {
-    if(other->shape().intersects(this->shape())) {
-        return true;
-    }
-    return false;
-}
+
 void obstacle::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget *)
 {
-    
-//    painter->drawRect( x , y , width,height);
-//    painter->fillRect( x , y , width,height, Qt::green);
-    painter->drawPolygon(*poly,Qt::OddEvenFill);
+     // not drawing this shit, it consumes CPU
     
 }

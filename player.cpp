@@ -30,7 +30,7 @@ player::player()
       color(qrand() % 256, qrand() % 256, qrand() % 256)
 {
     setRotation(qrand() % (360 * 16));
-    image = QImage("images/f1.jpg");
+    image = QImage("images/fureks_mini.png");
     setZValue(1.0);
     
 }
@@ -51,11 +51,12 @@ void player::paint(QPainter *painter, const QStyleOptionGraphicsItem *, QWidget 
 {
 
     painter->setBrush(Qt::white);
-    painter->drawRect(-5,-10,10,20);
+    //painter->drawRect(-5,-10,10,20);
+    painter->drawImage(QRect(-5,-10,10,20),image);
 
     if(scene()->collidingItems(this).size() > 0) {
-        qDebug(" colison !!!!!");
         this->speed = 0;
+//TODO implement speed down after different class of obstacles
 //      static float minSpeed = 1.0;
 //      if (this->speed > minSpeed)
 //        this->speed = (this->speed - minSpeed) * 0.9 + minSpeed;

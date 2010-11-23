@@ -16,7 +16,6 @@ public:
   QPainterPath shape() const;
   void paint(QPainter *painter, const QStyleOptionGraphicsItem *option,
 	      QWidget *widget);
-  bool collidesWithItem ( const QGraphicsItem * other, Qt::ItemSelectionMode mode = Qt::IntersectsItemShape ) const;
 
 private:
     QColor color;
