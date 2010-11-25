@@ -2,14 +2,15 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
+#include <QObject>
 #include <QMainWindow>
 #include <QMap>
 #include <QKeyEvent>
 #include <QShowEvent>
 #include <QHideEvent>
 #include <QTimer>
+#include <QtNetwork>
 #include "scene.h"
-#include <QObject>
 
 class mainwindow : public QMainWindow
 {
@@ -34,9 +35,11 @@ private:
     QString trackImageFileName;
     QString trackDataFileName;
 
+
 public slots:
     void advance();
     void movePlayer();
+
 };
 
 #endif // MAINWINDOW_H

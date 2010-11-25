@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui network
 
 TARGET = zoozel
 TEMPLATE = app
@@ -10,6 +10,7 @@ SOURCES +=  main.cpp \
             player.cpp \
             scene.cpp \
             track.cpp \
+    connection.cpp
 
 
 
@@ -18,6 +19,7 @@ HEADERS  += mainwindow.h \
             player.h \
             scene.h \
             track.h \
+    connection.h
 
 
 FORMS    +=
@@ -29,4 +31,3 @@ DEPENDPATH += .
 INCLUDEPATH += .
 
 SUBDIRS =
-

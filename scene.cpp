@@ -51,7 +51,9 @@ QGraphicsScene *scene::getScene()
 {
   return &field;
 }
-
+player *scene::getPlayer() {
+    return p;
+}
 
 void scene::setTrackImage(QString &fileName) {
     QPixmap trackImage(fileName);

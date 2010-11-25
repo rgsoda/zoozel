@@ -10,6 +10,9 @@ mainwindow::mainwindow()
     s->setParent(this);
     setCentralWidget ( s );
     setAttribute(Qt::WA_KeyCompression);
+
+
+
 }
 
 
@@ -82,4 +85,6 @@ void mainwindow::setTrackInfo(QString image, QString data) {
     this->trackDataFileName = data;
     s->setTrackData(data);
 }
+
+
 

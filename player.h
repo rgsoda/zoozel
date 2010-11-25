@@ -9,6 +9,7 @@ class player : public QObject, public QGraphicsItem
   
 public:
     player();
+    player(QString nickname);
 
   QRectF boundingRect() const;
   QPainterPath shape() const;
@@ -18,7 +19,8 @@ public:
   void rotateRight();
   void accelerate();
   void brake();
-  
+  QString nick;
+
 protected:
     void advance(int step);
 
@@ -28,6 +30,7 @@ private:
     qreal mouseEyeDirection;
     QColor color;
     QImage image;
+
 };
 
 #endif

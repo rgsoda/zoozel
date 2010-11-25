@@ -34,6 +34,12 @@ player::player()
     setZValue(1.0);
     
 }
+
+player::player(QString nickname) {
+    this->nick = nickname;
+    player();
+}
+
 QRectF player::boundingRect() const
 {
     qreal adjust = 0.0;
@@ -82,7 +88,7 @@ void player::accelerate()
 void player::brake()
 {
   if(speed>maxReverseSpeed)
-    speed -= 0.4;
+    speed -= 0.16;
 }
 
 void player::rotateLeft()
@@ -90,7 +96,10 @@ void player::rotateLeft()
   qreal dx = 7;
   if( speed > 0.07 )
     speed -= 0.07;
-  setRotation(rotation() - dx);
+  //avoid rotating in place
+  if(abs(speed) > 0.3)
+     dx -= maxSpeed/1.8;
+     setRotation(rotation() - dx);
   
 }
 
@@ -99,6 +108,9 @@ void player::rotateRight()
   qreal dx = 7;
   if( speed > 0.07 )
     speed -= 0.07;
-  setRotation(rotation() + dx);
+  //avoid rotating in place
+  if(abs(speed) > 0.3)
+     dx -= maxSpeed/1.8;
+     setRotation(rotation() + dx);
   
 }

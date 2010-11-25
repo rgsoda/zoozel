@@ -19,6 +19,7 @@ public:
     void acceleratePlayer();
     void brakePlayer();
     QGraphicsScene * getScene();
+    player * getPlayer();
     
     void setTrackImage(QString &fileName);
     void setTrackData(QString &fileName);
