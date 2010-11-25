@@ -7,7 +7,8 @@ connection::connection(QString host, quint16 port)
     this->serverHostame = host;
     this->serverPort = port;
     udpSocket = new QUdpSocket();
-    udpSocket->bind(QHostAddress::LocalHost,12345);
+
+
 
     connect(udpSocket,SIGNAL(readyRead()),this,SLOT(processPendingDatagrams()));
 
@@ -31,8 +32,7 @@ void connection::loginPlayer(player *p) {
 }
 
 bool connection::bind() {
-    //return udpSocket->bind(12345,QUdpSocket::ShareAddress);
-    return true;
+    return udpSocket->bind(QHostAddress::LocalHost,this->serverPort+1);
 }
 
 void connection::sendDatagram() {
