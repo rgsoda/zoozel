@@ -32,7 +32,7 @@ void connection::loginPlayer(player *p) {
 }
 
 bool connection::bind() {
-    return udpSocket->bind(QHostAddress::LocalHost,this->localPort);
+    return udpSocket->bind(QHostAddress::Any,this->localPort);
 }
 
 void connection::sendDatagram() {
