@@ -18,8 +18,8 @@ scene::scene() : QWidget() , field(0,0,mainwindow::window_width,mainwindow::wind
     view.viewport()->setFocusProxy( this );
     
     
-    p = new player();
-    field.addItem(p);
+//    p = new player();
+//    field.addItem(p);
     
     t = new track();
 
@@ -70,4 +70,9 @@ void scene::setTrackData(QString &fileName) {
     }
     p->setPos(t->startPoint);
 
+}
+
+void scene::putPlayer(player *p, bool local) {
+    if (local) this->p = p;
+    field.addItem(p);
 }

@@ -26,7 +26,7 @@ static qreal normalizeAngle(qreal angle)
 
 
 player::player()
-    : angle(0), speed(0), mouseEyeDirection(0),
+    : angle(0), speed(0),
       color(qrand() % 256, qrand() % 256, qrand() % 256)
 {
     setRotation(qrand() % (360 * 16));
@@ -35,9 +35,14 @@ player::player()
     
 }
 
-player::player(QString nickname) {
+player::player(QString nickname)
+    : angle(0), speed(0),
+      color(qrand() % 256, qrand() % 256, qrand() % 256)
+{
     this->nick = nickname;
-    player();
+    setRotation(qrand() % (360 * 16));
+    image = QImage("images/fureks_mini.png");
+    setZValue(1.0);
 }
 
 QRectF player::boundingRect() const
@@ -113,4 +118,8 @@ void player::rotateRight()
      dx -= maxSpeed/1.8;
      setRotation(rotation() + dx);
   
+}
+
+qreal player::getAngle() {
+    return angle;
 }

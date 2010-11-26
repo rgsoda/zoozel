@@ -9,7 +9,7 @@ class connection : public QObject
     Q_OBJECT
 
 public:
-    connection(QString host, quint16 port);
+    connection(QString host, quint16 port,quint16 localPort);
     bool bind();
     void loginPlayer(player *p);
 private:
@@ -17,6 +17,9 @@ private:
     player *localPlayer;
     QString serverHostame;
     quint16 serverPort;
+    quint16 localPort;
+    QList<player*> netPlayers;
+    void sendReadyDatagram();
 
 public slots:
     void processPendingDatagrams();

@@ -34,6 +34,8 @@ void mainwindow::keyPressEvent ( QKeyEvent *event )
     case Qt::Key_A:
         keyDown = true;
         break;
+    case Qt::Key_Escape:
+        exit(0);
     default:
         return;
     }
@@ -87,4 +89,6 @@ void mainwindow::setTrackInfo(QString image, QString data) {
 }
 
 
-
+void mainwindow::putPlayerOnScene(player *p, bool local) {
+    s->putPlayer(p,local);
+}

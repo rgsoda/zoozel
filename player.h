@@ -21,13 +21,14 @@ public:
   void brake();
   QString nick;
 
+  qreal getAngle();
+
 protected:
     void advance(int step);
 
 private:
     qreal angle;
     qreal speed;
-    qreal mouseEyeDirection;
     QColor color;
     QImage image;
 

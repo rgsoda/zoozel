@@ -11,6 +11,7 @@
 #include <QTimer>
 #include <QtNetwork>
 #include "scene.h"
+#include "player.h"
 
 class mainwindow : public QMainWindow
 {
@@ -22,6 +23,8 @@ public:
     const static int window_width = 800;
     const static int window_height = 600;
     void setTrackInfo(QString image, QString data);
+    void putPlayerOnScene(player *p,bool local);
+
 protected:
     virtual void keyPressEvent( QKeyEvent *event );
     virtual void keyReleaseEvent( QKeyEvent *event );
