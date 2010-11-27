@@ -22,16 +22,16 @@ void mainwindow::keyPressEvent ( QKeyEvent *event )
 
     switch ( event->key() )
     {
-    case Qt::Key_O:
+    case Qt::Key_J:
         keyLeft = true;
         break;
-    case Qt::Key_P:
+    case Qt::Key_L:
         keyRight = true;
         break;
-    case Qt::Key_Q:
+    case Qt::Key_I:
         keyUp = true;
         break;
-    case Qt::Key_A:
+    case Qt::Key_K:
         keyDown = true;
         break;
     case Qt::Key_Escape:
@@ -48,16 +48,16 @@ void mainwindow::keyReleaseEvent ( QKeyEvent *event )
     {
         switch ( event->key() )
         {
-        case Qt::Key_O:
+        case Qt::Key_J:
             keyLeft = false;
             break;
-        case Qt::Key_P:
+        case Qt::Key_L:
             keyRight = false;
             break;
-        case Qt::Key_Q:
+        case Qt::Key_I:
             keyUp = false;
             break;
-        case Qt::Key_A:
+        case Qt::Key_K:
             keyDown = false;
             break;
         default:
